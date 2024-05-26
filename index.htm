@@ -26,7 +26,7 @@ table, th, td {
 </select>
 <p id="token"></p>
 <button type="button" onclick="search()">Click Me!</button>
-<img height=100 width=100>
+<div class="hide"><img height=100 width=100></div>
 <table id="streams">
     
 </table>
@@ -61,7 +61,7 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
     var cell3 = row.insertCell(2);
       cell1.innerHTML = product.user_name;
       cell2.innerHTML = product.game_name;
-    cell3.innerHTML = product.thumbnail_url.replace("width","100").replace("height","100");
+    cell3.innerHTML = product.thumbnail_url.replace("{width}","100").replace("{height}","100");
     cell3.className = "myDIV"
     }
  });
