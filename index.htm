@@ -83,8 +83,7 @@ method: "GET",
 headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
 })
 
-    // your custom code
-    console.log('Yay! Loaded:', url)
+
 
     // resolve
     resolve(res.json()) // see note below!
@@ -104,7 +103,7 @@ document.getElementById("token").innerHTML = "Token:" + urlParams.get('#access_t
 
 // run the function and receive a Promise
 const promise = load(game_id)
-var breakpoint_here;
+
 // let the Promise know what you want to do when it resolves
 promise.then(function (value) {addToTable(value)});
   
