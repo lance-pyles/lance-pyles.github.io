@@ -96,17 +96,17 @@ function search(){
 
 
 var e = document.getElementById("games");
-var value = e.value;
+var game_id = e.value;
 document.getElementById("pagination").innerHTML = "";
 document.getElementById("token").innerHTML = "Token:" + urlParams.get('#access_token');
 
   
 
 // run the function and receive a Promise
-const promise = load(value)
+const promise = load(game_id)
 var breakpoint_here;
 // let the Promise know what you want to do when it resolves
-promise.then(addToTable(promise, promise.pagination.cursor));
+promise.then(function (value) {addToTable(value)});
   
  // addToTable(getUserData,1)
 //fetch_streams(value, null).then(
@@ -117,7 +117,7 @@ promise.then(addToTable(promise, promise.pagination.cursor));
  
 }
 
-function addToTable(streams, cursor)
+function addToTable(streams)
   {
 var tags = document.getElementById("tags").value.split(",");;
     var ul = document.getElementById("pagination");
