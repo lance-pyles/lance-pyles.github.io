@@ -104,7 +104,10 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
     }
     return result;
 };
-  addToTable(getUserData,1)
+  getUserData.then((a) => {
+    addToTable(a,1);
+  });
+ // addToTable(getUserData,1)
 //fetch_streams(value, null).then(
 //  function(value) {page1pagination = value.pagination.cursor;}
 //); 
