@@ -54,7 +54,7 @@ document.getElementById("token").innerHTML = "Token:" + urlParams.get('#access_t
 
  
  
-page1pagination = fetch_streams(value, null);  
+let page1pagination = await fetch_streams(value, null);  
 fetch_streams(value, page1pagination);
 
 
@@ -99,7 +99,7 @@ var pagination;
       endpoint = "https://api.twitch.tv/helix/streams?game_id=" + gameID + "&type=live&after=" + cursor;
     }
     
-    fetch(endpoint, {
+    return fetch(endpoint, {
 method: "GET",
 headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
 })
@@ -109,8 +109,7 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
      
  {
   addToTable(data, data.pagination.cursor);
-    
-   return data.pagination.cursor;
+
  });
     
   } 
