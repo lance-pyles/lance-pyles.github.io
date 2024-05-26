@@ -1,5 +1,6 @@
 <h1>Coming Soon</h1>
 <p id="demo"></p>
+<p id="demo2"></p>
 <script>
 const urlParams = new URLSearchParams(location.hash);
 document.getElementById("demo").innerHTML = "Token:" + urlParams.get('#access_token');
@@ -17,15 +18,12 @@ document.getElementById("demo").innerHTML = "Token:" + urlParams.get('#access_to
 //}
 //formBody = formBody.join("&");
   
-//fetch("https://id.twitch.tv/oauth2/token?client_id=piyrvo43n3t5xkklco4d313a4pi8mp", {
-//  method: "POST",
- // body: formBody,
- // headers: {
-  //  "Content-type": "application/x-www-form-urlencoded;charset=UTF-8"
- // }
-//})
- // .then(response => response.json())
-  //.then(data => document.getElementById("demo").innerHTML = "Token:" + urlParams.get('#access_token'));
+fetch("https://api.twitch.tv/helix/streams?game_id=33214&type=live", {
+method: "GET",
+headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
+})
+.then(response => response.json())
+.then(data => document.getElementById("demo").innerHTML = data);
 
- //  ;
+
 </script>
