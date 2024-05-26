@@ -77,11 +77,11 @@ var value = e.value;
 document.getElementById("token").innerHTML = "Token:" + urlParams.get('#access_token');
 
 
+fetch_streams(value, null).then(
+  function(value) {page1pagination = value;}
+); 
 
- 
- 
-let page1pagination = await fetch_streams(value, null);  
-fetch_streams(value, page1pagination);
+fetch_streams(value, page1pagination).then();
 
 
   
