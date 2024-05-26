@@ -1,30 +1,31 @@
 <h1>Coming Soon</h1>
 <p id="demo"></p>
 <script>
-  const urlParams = new URLSearchParams(queryString);
-  var details = {
-    'client_id':'9w7l1oen3pmdj1ezkloj0irud7me3p',
-'client_secret':'m4yzn4oqjgoabimsolbi6yyo67y9ju',
-'grant_type':'client_credentials'
-};
+const urlParams = new URLSearchParams(window.location.search);
+document.getElementById("demo").innerHTML = "Token:" + urlParams.get('#access_token');
+ // var details = {
+ //   'client_id':'9w7l1oen3pmdj1ezkloj0irud7me3p',
+//'client_secret':'m4yzn4oqjgoabimsolbi6yyo67y9ju',
+//'grant_type':'client_credentials'
+//};
 
-var formBody = [];
-for (var property in details) {
-  var encodedKey = encodeURIComponent(property);
-  var encodedValue = encodeURIComponent(details[property]);
-  formBody.push(encodedKey + "=" + encodedValue);
-}
-formBody = formBody.join("&");
+//var formBody = [];
+//for (var property in details) {
+//  var encodedKey = encodeURIComponent(property);
+//  var encodedValue = encodeURIComponent(details[property]);
+//  formBody.push(encodedKey + "=" + encodedValue);
+//}
+//formBody = formBody.join("&");
   
-fetch("https://id.twitch.tv/oauth2/token?client_id=piyrvo43n3t5xkklco4d313a4pi8mp", {
-  method: "POST",
-  body: formBody,
-  headers: {
-    "Content-type": "application/x-www-form-urlencoded;charset=UTF-8"
-  }
-})
-  .then(response => response.json())
-  .then(data => document.getElementById("demo").innerHTML = "Token:" + urlParams.get('#access_token'));
+//fetch("https://id.twitch.tv/oauth2/token?client_id=piyrvo43n3t5xkklco4d313a4pi8mp", {
+//  method: "POST",
+ // body: formBody,
+ // headers: {
+  //  "Content-type": "application/x-www-form-urlencoded;charset=UTF-8"
+ // }
+//})
+ // .then(response => response.json())
+  //.then(data => document.getElementById("demo").innerHTML = "Token:" + urlParams.get('#access_token'));
 
-   ;
+ //  ;
 </script>
