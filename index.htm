@@ -86,8 +86,8 @@ document.getElementById("token").innerHTML = "Token:" + urlParams.get('#access_t
 const promise = load(game_id)
 
 // let the Promise know what you want to do when it resolves
-promise.then(function (value) {addToTable(value); const promise2 = load(game_id);});
-promise2.then(function (value) {addToTable(value);});
+promise.then(function (value) {addToTable(value); const promise2 = load(game_id);promise2.then(function (value) {addToTable(value);});});
+
   
  // addToTable(getUserData,1)
 //fetch_streams(value, null).then(
