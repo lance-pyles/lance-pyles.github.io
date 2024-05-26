@@ -72,18 +72,16 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
         cell5.innerHTML = "<img width=100 height=100 src=" + product.thumbnail_url.replace("{width}","512").replace("{height}","512") + ">";
     }
  });
-}
-
   fetch("https://api.twitch.tv/helix/streams?game_id=" + value + "&type=live", {
 method: "GET",
 headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
 })
-.then(response => response.json())
-.then(data => 
+.then(response2 => response.json())
+.then(data2 => 
  
      
  {
-  for (const product of data.data) {
+  for (const product of data2.data) {
 
       var row = table.insertRow(-1);
       var cell1 = row.insertCell(0);
@@ -99,6 +97,9 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
         cell5.innerHTML = "<img width=100 height=100 src=" + product.thumbnail_url.replace("{width}","512").replace("{height}","512") + ">";
     }
  });
+}
+
+  
 
 </script>
 
