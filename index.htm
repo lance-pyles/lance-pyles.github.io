@@ -23,7 +23,7 @@ fetch("https://id.twitch.tv/oauth2/token?client_id=piyrvo43n3t5xkklco4d313a4pi8m
   }
 })
   .then(response => response.json())
-  .then(data => document.getElementById("demo").innerHTML = data);
+  .then(data => document.getElementById("demo").innerHTML = location.href);
 
    ;
 </script>
