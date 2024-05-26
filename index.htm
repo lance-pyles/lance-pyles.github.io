@@ -49,25 +49,19 @@ var e = document.getElementById("games");
 var value = e.value;
 var page1pagination;
 document.getElementById("token").innerHTML = "Token:" + urlParams.get('#access_token');
-  
-fetch("https://api.twitch.tv/helix/streams?game_id=" + value + "&type=live", {
-method: "GET",
-headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
-})
-.then(response => response.json())
-.then(data => 
+
+
+
  
-     
- {
-var page1pagination = data.pagination.cursor;
-   var ul = document.getElementById("pagination");
-  var li = document.createElement("li");
-  li.appendChild(document.createTextNode(page1pagination));
-  ul.appendChild(li);
-  addToTable(data.data);
- });
-  
-fetch_streams(value, page1pagination);
+ 
+page1 = fetch_streams(value, null);  
+page2 = fetch_streams(value, page1pagination);
+
+var ul = document.getElementById("pagination");
+var li = document.createElement("li");
+li.appendChild(document.createTextNode(page1));
+li.appendChild(document.createTextNode(page2));
+ul.appendChild(li);
   
 }
 
@@ -93,8 +87,18 @@ for (const product of streams) {
   
  function fetch_streams(gameID, cursor)
   {
-
-    fetch("https://api.twitch.tv/helix/streams?game_id=" + gameID + "&type=live&after=" + cursor, {
+var endpoint;
+var pagination;
+    if (cursor)
+    {
+      endpoint = "https://api.twitch.tv/helix/streams?game_id=" + gameID + "&type=live";
+    }
+    else
+    {
+      endpoint = "https://api.twitch.tv/helix/streams?game_id=" + gameID + "&type=live&after=" + cursor;
+    }
+    
+    fetch(endpoint, {
 method: "GET",
 headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
 })
@@ -104,8 +108,9 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
      
  {
   addToTable(data.data);
+    pagination = data.pagination.cursor;
  });
-    
+    return pagination
   } 
 
 </script>
