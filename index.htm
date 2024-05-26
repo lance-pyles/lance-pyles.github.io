@@ -48,37 +48,11 @@ table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>tags</th><th>view
 
 
   
-  async function fetch_streams(gameID, cursor)
-  {
-var endpoint;
-var pagination;
-    if (!cursor)
-    {
-      endpoint = "https://api.twitch.tv/helix/streams?first=100&game_id=" + gameID + "&type=live";
-    }
-    else
-    {
-      endpoint = "https://api.twitch.tv/helix/streams?first=100&game_id=" + gameID + "&type=live&after=" + cursor;
-    }
-    
-    await fetch(endpoint, {
-method: "GET",
-headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
-})
-.then(response => response.json())
-.then(data => 
- 
-     
- {
-//  addToTable(data, data.pagination.cursor);
-//return data;
- });
-    
-  } 
+
   function load (gameID) {
   return new Promise(async function (resolve, reject) {
     // do async thing
-    const res = await fetch("https://api.twitch.tv/helix/streams?first=100&game_id=" + gameID + "&type=live", {
+    const res = await fetch("https://api.twitch.tv/helix/streams?first=5&game_id=" + gameID + "&type=live", {
 method: "GET",
 headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
 })
