@@ -89,7 +89,7 @@ for (const product of streams) {
   {
 var endpoint;
 var pagination;
-    if (cursor)
+    if (!cursor)
     {
       endpoint = "https://api.twitch.tv/helix/streams?game_id=" + gameID + "&type=live";
     }
