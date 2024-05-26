@@ -46,6 +46,8 @@ const urlParams = new URLSearchParams(location.hash);
 var table = document.getElementById("streams");
 table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>tags</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
 
+
+  
   async function fetch_streams(gameID, cursor)
   {
 var endpoint;
@@ -59,7 +61,7 @@ var pagination;
       endpoint = "https://api.twitch.tv/helix/streams?first=100&game_id=" + gameID + "&type=live&after=" + cursor;
     }
     
-    return fetch(endpoint, {
+    await fetch(endpoint, {
 method: "GET",
 headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
 })
@@ -68,8 +70,8 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
  
      
  {
-  addToTable(data, data.pagination.cursor);
-
+//  addToTable(data, data.pagination.cursor);
+//return data;
  });
     
   } 
@@ -85,14 +87,30 @@ document.getElementById("pagination").innerHTML = "";
 document.getElementById("token").innerHTML = "Token:" + urlParams.get('#access_token');
 var page1pagination;
 
-fetch_streams(value, null).then(
-  function(value) {page1pagination = value;}
-); 
+const getUserData = async (gameID) => {
+    const result = [];
+ var url = "https://api.twitch.tv/helix/streams?first=100&game_id=" + gameID + "&type=live";
+    while (url) {
+        const response = await fetch(endpoint, {
+method: "GET",
+headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
+});
+        if (!response.ok) {
+            throw new Error("HTTP error " + response.status);
+        }
+        const {data, pagination} = await response.json();
+        result.push(...data);
+        url = "https://api.twitch.tv/helix/streams?first=100&game_id=" + gameID + "&type=live&after=" + cursor;
+    }
+    return result;
+};
+  addToTable(result,1)
+//fetch_streams(value, null).then(
+//  function(value) {page1pagination = value.pagination.cursor;}
+//); 
 
-fetch_streams(value, page1pagination).then();
-
-
-  
+//fetch_streams(value, page1pagination).then();
+ 
 }
 
 function addToTable(streams, cursor)
