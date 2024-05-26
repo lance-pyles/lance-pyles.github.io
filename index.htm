@@ -106,7 +106,7 @@ document.getElementById("token").innerHTML = "Token:" + urlParams.get('#access_t
 const promise = load(value)
 
 // let the Promise know what you want to do when it resolves
-promise.then(addToTable(data, data.pagination.cursor));
+promise.then(addToTable(promise, promise.pagination.cursor));
   
  // addToTable(getUserData,1)
 //fetch_streams(value, null).then(
