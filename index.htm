@@ -50,11 +50,11 @@ var endpoint;
 var pagination;
     if (!cursor)
     {
-      endpoint = "https://api.twitch.tv/helix/streams?game_id=" + gameID + "&type=live";
+      endpoint = "https://api.twitch.tv/helix/streams?first=100&game_id=" + gameID + "&type=live";
     }
     else
     {
-      endpoint = "https://api.twitch.tv/helix/streams?game_id=" + gameID + "&type=live&after=" + cursor;
+      endpoint = "https://api.twitch.tv/helix/streams?first=100&game_id=" + gameID + "&type=live&after=" + cursor;
     }
     
     return fetch(endpoint, {
