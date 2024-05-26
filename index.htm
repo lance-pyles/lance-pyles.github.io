@@ -38,36 +38,7 @@ const urlParams = new URLSearchParams(location.hash);
 var table = document.getElementById("streams");
 table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
 
-  function fetch(gameID, cursor)
-  {
-
-    fetch("https://api.twitch.tv/helix/streams?game_id=" + gameID + "&type=live&after=" + cursor, {
-method: "GET",
-headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
-})
-.then(response => response.json())
-.then(data => 
- 
-     
- {
-  for (const product of data.data) {
-
-      var row = table.insertRow(-1);
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-            var cell5 = row.insertCell(4);
-      cell1.innerHTML = product.user_name;
-      cell2.innerHTML = product.game_name;
-          cell3.innerHTML = product.viewer_count;
-    cell4.innerHTML = "<a href=" + product.thumbnail_url.replace("{width}","512").replace("{height}","512") + ">Thumbnail</a>";
-    cell4.className = "myDIV";
-        cell5.innerHTML = "<img width=100 height=100 src=" + product.thumbnail_url.replace("{width}","512").replace("{height}","512") + ">";
-    }
- });
-    
-  }
+  
   
 function search(){
   var table = document.getElementById("streams");
@@ -114,7 +85,36 @@ fetch(value, page1pagination);
   
 }
 
-  
+ function fetch(gameID, cursor)
+  {
+
+    fetch("https://api.twitch.tv/helix/streams?game_id=" + gameID + "&type=live&after=" + cursor, {
+method: "GET",
+headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
+})
+.then(response => response.json())
+.then(data => 
+ 
+     
+ {
+  for (const product of data.data) {
+
+      var row = table.insertRow(-1);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+      cell1.innerHTML = product.user_name;
+      cell2.innerHTML = product.game_name;
+          cell3.innerHTML = product.viewer_count;
+    cell4.innerHTML = "<a href=" + product.thumbnail_url.replace("{width}","512").replace("{height}","512") + ">Thumbnail</a>";
+    cell4.className = "myDIV";
+        cell5.innerHTML = "<img width=100 height=100 src=" + product.thumbnail_url.replace("{width}","512").replace("{height}","512") + ">";
+    }
+ });
+    
+  } 
 
 </script>
 
