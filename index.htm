@@ -20,7 +20,7 @@ img:active:hover{
 <body>
   <h1>In progress...</h1>
 <label for="games">Choose a game:</label>
-
+<ul id="pagination"></ul>
 <select name="games" id="games">
   <option value="33214">Fortnite</option>
   <option value="460649">Splatoon</option>
@@ -56,7 +56,7 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
  
      
  {
-
+var page1pagination = data.pagination.cursor;
   for (const product of data.data) {
 
       var row = table.insertRow(-1);
@@ -98,6 +98,11 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
         cell5.innerHTML = "<img width=100 height=100 src=" + product.thumbnail_url.replace("{width}","512").replace("{height}","512") + ">";
     }
  });
+
+  var ul = document.getElementById("pagination");
+  var li = document.createElement("li");
+  li.appendChild(document.createTextNode(page1pagination));
+  ul.appendChild(li);
 }
 
   
