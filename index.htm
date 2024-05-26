@@ -9,12 +9,19 @@
 <p id="demo"></p>
 <p id="demo2"></p>
 <ul></ul>
+<table id="streams">
+</table>
 <button type="button" onclick="search()">Click Me!</button>
 <script>
 const urlParams = new URLSearchParams(location.hash);
 const myList = document.querySelector("ul");
 function search(){
-
+  var table = document.getElementById("myTable");
+      var row = table.insertRow(0);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      cell1.innerHTML = "user_name";
+      cell2.innerHTML = "game_name";
 myList.innerHTML = "";
 var e = document.getElementById("games");
 var value = e.value;
@@ -32,8 +39,13 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
  {
   for (const product of data.data) {
       const listItem = document.createElement("li");
-      listItem.appendChild(document.createElement("strong")).textContent = product.user_name + "(" + product.game_name + ")";
+      listItem.appendChild(document.createElement("strong")).textContent = product.user_name + " (" + product.game_name + ")";
       myList.appendChild(listItem);
+      var row = table.insertRow(0);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      cell1.innerHTML = product.user_name;
+      cell2.innerHTML = product.game_name;
     }
  });
 }
