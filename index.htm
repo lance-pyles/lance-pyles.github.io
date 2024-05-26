@@ -1,7 +1,7 @@
 <h1>Coming Soon</h1>
 <p id="demo"></p>
 <script>
-const urlParams = new URLSearchParams(window.location.search);
+const urlParams = new URLSearchParams(location.hash);
 document.getElementById("demo").innerHTML = "Token:" + urlParams.get('#access_token');
  // var details = {
  //   'client_id':'9w7l1oen3pmdj1ezkloj0irud7me3p',
