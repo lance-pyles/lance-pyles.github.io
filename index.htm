@@ -61,12 +61,12 @@ fetch_streams(value, page1pagination);
   
 }
 
-function addToTable(streams)
+function addToTable(streams, cursor)
   {
-    pagination = streams.pagination.cursor;
+
     var ul = document.getElementById("pagination");
 var li = document.createElement("li");
-li.appendChild(document.createTextNode(pagination));
+li.appendChild(document.createTextNode(cursor));
 ul.appendChild(li);
 for (const product of streams.data) {
 
@@ -108,9 +108,9 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
  
      
  {
-  addToTable(data);
+  addToTable(data, streams.pagination.cursor);
     
-   //return pagination;
+   return streams.pagination.cursor;
  });
     
   } 
