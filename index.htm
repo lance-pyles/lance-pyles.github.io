@@ -38,10 +38,10 @@ const urlParams = new URLSearchParams(location.hash);
 var table = document.getElementById("streams");
 table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
 
-  function fetch(cursor)
+  function fetch(gameID, cursor)
   {
 
-    fetch("https://api.twitch.tv/helix/streams?game_id=" + value + "&type=live&after=" + cursor, {
+    fetch("https://api.twitch.tv/helix/streams?game_id=" + gameID + "&type=live&after=" + cursor, {
 method: "GET",
 headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
 })
@@ -110,7 +110,7 @@ var page1pagination = data.pagination.cursor;
     }
  });
   
-fetch(page1pagination);
+fetch(value, page1pagination);
   
 }
 
