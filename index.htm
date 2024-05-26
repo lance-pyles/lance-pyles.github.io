@@ -1,6 +1,7 @@
 <h1>Coming Soon</h1>
 <p id="demo"></p>
 <script>
+  const urlParams = new URLSearchParams(queryString);
   var details = {
     'client_id':'9w7l1oen3pmdj1ezkloj0irud7me3p',
 'client_secret':'m4yzn4oqjgoabimsolbi6yyo67y9ju',
@@ -23,7 +24,7 @@ fetch("https://id.twitch.tv/oauth2/token?client_id=piyrvo43n3t5xkklco4d313a4pi8m
   }
 })
   .then(response => response.json())
-  .then(data => document.getElementById("demo").innerHTML = location.hash);
+  .then(data => document.getElementById("demo").innerHTML = "Token:" + urlParams.get('#access_token'));
 
    ;
 </script>
