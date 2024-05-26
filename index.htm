@@ -1,34 +1,25 @@
 <h1>Coming Soon</h1>
-<label for="cars">Choose a car:</label>
+<label for="games">Choose a game:</label>
 
-<select name="cars" id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
+<select name="games" id="games">
+  <option value="33214">Fortnite</option>
+  <option value="460649">Splatoon</option>
 </select>
 <p id="demo"></p>
 <p id="demo2"></p>
 <ul></ul>
+<button type="button" onclick="search();">Click Me!</button>
 <script>
 const urlParams = new URLSearchParams(location.hash);
 const myList = document.querySelector("ul");
-document.getElementById("demo").innerHTML = "Token:" + urlParams.get('#access_token');
- // var details = {
- //   'client_id':'9w7l1oen3pmdj1ezkloj0irud7me3p',
-//'client_secret':'m4yzn4oqjgoabimsolbi6yyo67y9ju',
-//'grant_type':'client_credentials'
-//};
-
-//var formBody = [];
-//for (var property in details) {
-//  var encodedKey = encodeURIComponent(property);
-//  var encodedValue = encodeURIComponent(details[property]);
-//  formBody.push(encodedKey + "=" + encodedValue);
-//}
-//formBody = formBody.join("&");
+function search(){
   
-fetch("https://api.twitch.tv/helix/streams?game_id=33214&type=live", {
+var e = document.getElementById("games");
+var value = e.value;
+
+document.getElementById("demo").innerHTML = "Token:" + urlParams.get('#access_token');
+  
+fetch("https://api.twitch.tv/helix/streams?game_id=" + value + "&type=live", {
 method: "GET",
 headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
 })
@@ -39,11 +30,10 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
  {
   for (const product of data.data) {
       const listItem = document.createElement("li");
-      listItem.appendChild(document.createElement("strong")).textContent = product.user_name;
-      //listItem.appendChild(document.createElement("strong")).textContent =`£${product.Price}`;
+      listItem.appendChild(document.createElement("strong")).textContent = product.user_name + "(" + product.game_name + ")";
       myList.appendChild(listItem);
     }
  });
-
+}
 
 </script>
