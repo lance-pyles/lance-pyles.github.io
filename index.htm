@@ -41,7 +41,7 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
       const listItem = document.createElement("li");
       listItem.appendChild(document.createElement("strong")).textContent = product.user_name + " (" + product.game_name + ")";
       myList.appendChild(listItem);
-      var row = table.insertRow(0);
+      var row = table.insertRow(-1);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
       cell1.innerHTML = product.user_name;
