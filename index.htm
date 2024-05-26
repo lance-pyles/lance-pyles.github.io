@@ -66,8 +66,7 @@ function addToTable(streams)
     pagination = streams.pagination.cursor;
     var ul = document.getElementById("pagination");
 var li = document.createElement("li");
-li.appendChild(document.createTextNode(page1));
-li.appendChild(document.createTextNode(page2));
+li.appendChild(document.createTextNode(pagination));
 ul.appendChild(li);
 for (const product of streams.data) {
 
