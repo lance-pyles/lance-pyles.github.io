@@ -5,6 +5,14 @@ table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
 }
+.hide {
+  display: none;
+}
+    
+.myDIV:hover + .hide {
+  display: block;
+  color: red;
+}
 </style>
 </head>
 <body>
@@ -17,19 +25,20 @@ table, th, td {
   <option value="2692">Super Mario 64</option>
 </select>
 <p id="token"></p>
-<!--<ul></ul>-->
+<button type="button" onclick="search()">Click Me!</button>
+<img height=100 width=100>
 <table id="streams">
     
 </table>
-<button type="button" onclick="search()">Click Me!</button>
+
 <script>
 const urlParams = new URLSearchParams(location.hash);
-const myList = document.querySelector("ul");
+
 function search(){
   var table = document.getElementById("streams");
   table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>thumbnail_url</th></tr>";
 
-myList.innerHTML = "";
+
 var e = document.getElementById("games");
 var value = e.value;
 
@@ -52,7 +61,8 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
     var cell3 = row.insertCell(2);
       cell1.innerHTML = product.user_name;
       cell2.innerHTML = product.game_name;
-    cell3.innerHTML = product.thumbnail_url;
+    cell3.innerHTML = product.thumbnail_url.replace("width","100").replace("height","100");
+    cell3.className = "myDIV"
     }
  });
 }
