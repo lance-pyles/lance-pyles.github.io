@@ -101,7 +101,7 @@ var li = document.createElement("li");
 li.appendChild(document.createTextNode(cursor));
 ul.appendChild(li);
 for (const product of streams.data) {
-var tags = document.getElementById("tags").value;
+var tags = document.getElementById("tags").value.split(",");;
 for(tag in tags)
 {
 if(!product.tags.includes(tag))
