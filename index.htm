@@ -35,7 +35,8 @@ img:hover{
 
 <script>
 const urlParams = new URLSearchParams(location.hash);
-
+  var table = document.getElementById("streams");
+  table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
 function search(){
   var table = document.getElementById("streams");
   table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
