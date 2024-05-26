@@ -75,7 +75,7 @@ var e = document.getElementById("games");
 var value = e.value;
 
 document.getElementById("token").innerHTML = "Token:" + urlParams.get('#access_token');
-
+var page1pagination;
 
 fetch_streams(value, null).then(
   function(value) {page1pagination = value;}
