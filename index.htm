@@ -1,8 +1,10 @@
 <h1>Coming Soon</h1>
 <p id="demo"></p>
 <p id="demo2"></p>
+<ul></ul>
 <script>
 const urlParams = new URLSearchParams(location.hash);
+const myList = document.querySelector("ul");
 document.getElementById("demo").innerHTML = "Token:" + urlParams.get('#access_token');
  // var details = {
  //   'client_id':'9w7l1oen3pmdj1ezkloj0irud7me3p',
