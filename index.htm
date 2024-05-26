@@ -29,6 +29,9 @@ img:active:hover{
   <option value="460649">Splatoon</option>
   <option value="2692">Super Mario 64</option>
 </select>
+<p>
+<label for="tags">Tags (CSV):</label>
+<input type="text" id="tags" name="tags">
 <p id="token"></p>
 <button type="button" onclick="search()">Click Me!</button>
 <div class="hide"><img height=100 width=100></div>
@@ -39,7 +42,7 @@ img:active:hover{
 <script>
 const urlParams = new URLSearchParams(location.hash);
 var table = document.getElementById("streams");
-table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
+table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>tags</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
 
   async function fetch_streams(gameID, cursor)
   {
@@ -71,7 +74,7 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
   
 function search(){
   var table = document.getElementById("streams");
-  table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
+  table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>tags</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
 
 
 var e = document.getElementById("games");
@@ -92,25 +95,41 @@ fetch_streams(value, page1pagination).then();
 
 function addToTable(streams, cursor)
   {
-
+var addStream = true;
     var ul = document.getElementById("pagination");
 var li = document.createElement("li");
 li.appendChild(document.createTextNode(cursor));
 ul.appendChild(li);
 for (const product of streams.data) {
+var tags = document.getElementById("tags").value;
+for(tag in tags)
+{
+if(!product.tags.includes(tag))
+{
+addStream = false;
+}
+}
 
-      var row = table.insertRow(-1);
+
+
+if (addStream)
+{
+var row = table.insertRow(-1);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
+    var cell3 = row.insertCell(2); //tags
         var cell4 = row.insertCell(3);
             var cell5 = row.insertCell(4);
+                        var cell6 = row.insertCell(5);
       cell1.innerHTML = product.user_name;
       cell2.innerHTML = product.game_name;
-          cell3.innerHTML = product.viewer_count;
-    cell4.innerHTML = "<a href=" + product.thumbnail_url.replace("{width}","512").replace("{height}","512") + ">Thumbnail</a>";
-    cell4.className = "myDIV";
-        cell5.innerHTML = "<img width=100 height=100 src=" + product.thumbnail_url.replace("{width}","512").replace("{height}","512") + ">";
+            cell3.innerHTML = product.tags;
+          cell4.innerHTML = product.viewer_count;
+    cell5.innerHTML = "<a href=" + product.thumbnail_url.replace("{width}","512").replace("{height}","512") + ">Thumbnail</a>";
+    cell5.className = "myDIV";
+        cell6.innerHTML = "<img width=100 height=100 src=" + product.thumbnail_url.replace("{width}","512").replace("{height}","512") + ">";
+}
+      
     }
   }
   
