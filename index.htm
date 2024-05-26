@@ -103,6 +103,8 @@ ul.appendChild(li);
 for (const product of streams.data) {
   var addStream = true;
 
+  if(tags.length != 0)
+  {
 for(tag of tags)
 {
 if(!product.tags.includes(tag))
@@ -110,6 +112,9 @@ if(!product.tags.includes(tag))
 addStream = false;
 }
 }
+  }
+  
+
 
 
 
