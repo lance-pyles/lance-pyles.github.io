@@ -104,7 +104,7 @@ document.getElementById("token").innerHTML = "Token:" + urlParams.get('#access_t
 
 // run the function and receive a Promise
 const promise = load(value)
-await new Promise(r => setTimeout(r, 100));
+var breakpoint_here;
 // let the Promise know what you want to do when it resolves
 promise.then(addToTable(promise, promise.pagination.cursor));
   
