@@ -51,7 +51,7 @@ var token = urlParams.get('#access_token');
 document.getElementById("token").innerHTML = "Token:" + token;
 
   function getStarWarsPlanets(progress, gameID, planets = []) {
-    var url = "https://api.twitch.tv/helix/streams?first=100&game_id=" + gameID + "&type=live"
+    var url = "https://api.twitch.tv/helix/streams?first=10&game_id=" + gameID + "&type=live"
   return new Promise((resolve, reject) => fetch(url, {
 method: "GET",
 //headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer " + token + ", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
@@ -137,7 +137,7 @@ var tags = document.getElementById("tags").value.split(",");;
 var li = document.createElement("li");
 li.appendChild(document.createTextNode(streams[0].pagination.cursor));
 ul.appendChild(li);
-for (const product of streams.data) {
+for (const product of streams[0].data) {
   var addStream = true;
 
 
