@@ -55,7 +55,10 @@ document.getElementById("token").innerHTML = "Token:" + token;
   return new Promise((resolve, reject) => fetch(url, {
 method: "GET",
 //headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer " + token + ", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
-headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
+headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer eet4p9xb1qy0n2vxwtzm5x1q6p8edi", "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p",
+         "Access-Control-Allow-Headers" : "Content-Type",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"}
 })
     .then(response => {
         if (response.status !== 200)  {
