@@ -77,23 +77,23 @@
   
   function getStarWarsPlanets(progress, cursor, game_id, access_token, planets = []) {
    //default
-    var url = "https://api.twitch.tv/helix/streams?first=" + streams_per_page + "&game_id=" + game_id + "&type=live";
+    var url = `https://api.twitch.tv/helix/streams?first=${maximum_streams_per_page}&game_id=${game_id}&type=live`;
     
     if (game_id == -1)
     {
       
          if (cursor){
-        url = "https://api.twitch.tv/helix/streams?first=" + streams_per_page + "&type=live&after=" + cursor;
+        url = `https://api.twitch.tv/helix/streams?first=${maximum_streams_per_page}&type=live&after=${cursor}`;
           }
           else
          {
-          url = "https://api.twitch.tv/helix/streams?first=" + streams_per_page + "&type=live"
+          url = `https://api.twitch.tv/helix/streams?first=${maximum_streams_per_page}&type=live`
          }
     }
     else
     {
       if (cursor){
-url = "https://api.twitch.tv/helix/streams?first=" + streams_per_page + "&game_id=" + game_id + "&type=live&after=" + cursor;
+url = `https://api.twitch.tv/helix/streams?first=${maximum_streams_per_page}&game_id=${game_id}&type=live&after=${cursor}`;
 }
     }
 
