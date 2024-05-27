@@ -24,8 +24,9 @@ img:active:hover{
   <p>Bugs:</p>
   <p>Duplicate streams (pagination is null)</p>
 
+
+
 <label for="games">Choose a game:</label>
-<ul id="pagination"></ul>
 <select name="games" id="games">
   <option value="33214">Fortnite</option>
   <option value="460649">Splatoon</option>
@@ -40,7 +41,8 @@ img:active:hover{
 <table id="streams">
     
 </table>
-
+<label for="pagination">Pagination:</label>
+<ul name="pagination" id="pagination"></ul>
 <script>
 const urlParams = new URLSearchParams(location.hash);
 var table = document.getElementById("streams");
