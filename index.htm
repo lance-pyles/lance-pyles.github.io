@@ -135,7 +135,7 @@ function addToTable(streams)
 var tags = document.getElementById("tags").value.split(",");;
     var ul = document.getElementById("pagination");
 var li = document.createElement("li");
-li.appendChild(document.createTextNode(streams.pagination.cursor));
+li.appendChild(document.createTextNode(streams[0].pagination.cursor));
 ul.appendChild(li);
 for (const product of streams.data) {
   var addStream = true;
