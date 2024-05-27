@@ -33,11 +33,12 @@
 <p>
     
 <!--Maximum pages-->
-<p id="maximum_pages">maximum_pages: </p>
+<label for="maximum_pages">maximum_pages:</label>
+<input type="number" id="maximum_pages" name="maximum_pages" min="1" max="100">
 
 <!--Streams Per Page-->
 <label for="maximum_streams_per_page">maximum_streams_per_page:</label>
-<input type="number" id="maximum_streams_per_page" name="maximum_streams_per_page" min="5" max="100" value="5">
+<input type="number" id="maximum_streams_per_page" name="maximum_streams_per_page" min="5" max="100">
 
 <p><button type="button" onclick="search()">Click Me!</button>
 
@@ -61,7 +62,7 @@
  var pages_loaded = 0;
  var streams_loaded = 0;
  var streams_loaded_post_filter = 0;
- var maximum_pages = 25;
+ var maximum_pages = 1;
  var maximum_streams_per_page = 20;
 
  var urlParams;
@@ -75,7 +76,9 @@
      set_game_id();
      access_token = urlParams.get('#access_token');
      //table.innerHTML = "";
-     document.getElementById("access_token").innerHTML = "access_token: " + access_token;
+    document.getElementById("maximum_pages").value = maximum_pages;
+    document.getElementById("maximum_pages").value = maximum_pages;
+     document.getElementById("maximum_streams_per_page").innerHTML = "maximum_streams_per_page: " + maximum_streams_per_page;
      document.getElementById("maximum_pages").innerHTML = "maximum_pages: " + maximum_pages;
      document.getElementById("maximum_streams_per_page").innerHTML = "maximum_streams_per_page: " + maximum_streams_per_page;
  }
