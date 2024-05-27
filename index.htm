@@ -150,6 +150,10 @@ getStarWarsPlanets(progressCallback, null, game_id, access_token)
     //remove last page if it had no results
     if (planets[planets.length - 1].data.length == 0){
 planets.pop();
+      var ul = document.getElementById("pagination");
+    var li = document.createElement("li");
+li.appendChild(document.createTextNode("null"));
+ul.appendChild(li);
     }
     addToTable(planets);
     console.log(`${pages_loaded} pages loaded; ${streams_loaded} streams loaded;`);
@@ -205,10 +209,7 @@ var row = table.insertRow(-1);
 }
       
     }
-  }else{var ul = document.getElementById("pagination");
-    var li = document.createElement("li");
-li.appendChild(document.createTextNode("null"));
-ul.appendChild(li);}
+  }
 
   }
   }
