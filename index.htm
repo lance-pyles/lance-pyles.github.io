@@ -54,7 +54,7 @@ const urlParams = new URLSearchParams(location.hash);
 var table = document.getElementById("streams");
 table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>tags</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
 var token = urlParams.get('#access_token');
-document.getElementById("token").innerHTML = "Token:" + token;
+document.getElementById("token").innerHTML = "Token: " + token;
 
   function getStarWarsPlanets(progress, gameID, token, planets = []) {
     var url = "https://api.twitch.tv/helix/streams?first=10&game_id=" + gameID + "&type=live"
