@@ -133,11 +133,14 @@ getStarWarsPlanets(progressCallback, game_id)
 function addToTable(streams)
   {
 var tags = document.getElementById("tags").value.split(",");;
-    var ul = document.getElementById("pagination");
-var li = document.createElement("li");
-li.appendChild(document.createTextNode(streams[0].pagination.cursor));
+for (page of streams)
+  {
+var ul = document.getElementById("pagination");
+    var li = document.createElement("li");
+li.appendChild(document.createTextNode(page.pagination.cursor));
 ul.appendChild(li);
-for (const product of streams[0].data) {
+
+    for (const product of page.data) {
   var addStream = true;
 
 
@@ -173,6 +176,14 @@ var row = table.insertRow(-1);
 }
       
     }
+  }
+
+    
+    
+
+    
+
+
   }
   
   
