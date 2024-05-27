@@ -50,21 +50,30 @@ table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>tags</th><th>view
 var token = urlParams.get('#access_token');
 document.getElementById("token").innerHTML = "Token:" + token;
 
-  const fetchAll = (next_token, records) => {
+  function getStarWarsPlanets(progress, url = "https://api.twitch.tv/helix/streams?first=5&game_id=" + gameID + "&type=live", planets = []) {
+  return new Promise((resolve, reject) => fetch(url)
+    .then(response => {
+        if (response.status !== 200)  {
+          throw `${response.status}: ${response.statusText}`;
+        }
+        response.json().then(data => { 
+          planets = planets.concat(data.results);
 
-  // Wrap the query result in a promise
-  return new Promise(resolve => {
-    // Base case: we've reached the end, and there are no more cursors.
-    if (next_token == null) {
-      return resolve(records)
-    }
+          if(data.pagination.cursor) {
+            progress && progress(planets);
+            getStarWarsPlanets(progress, data..pagination.cursor, planets).then(resolve).catch(reject)
+          } else {
+            resolve(planets);
+          }
+        }).catch(reject);
+    }).catch(reject));
+}
 
-    
-        // Add the records from this query to all the records we have so far
-        const newResults = records.concat(queryResult.records)
-        
-        resolve(fetchAll(queryResult.cursor, newResults))
-      })}
+function progressCallback(planets) {
+  // render progress
+  console.log(`${planets.length} loaded`);
+}
+
 
 
 
@@ -101,10 +110,17 @@ var e = document.getElementById("games");
 var game_id = e.value;
 document.getElementById("pagination").innerHTML = "";
 
-// let the Promise know what you want to do when it resolves
-fetchAll.then(function (value) {
+getStarWarsPlanets(progressCallback)
+  .then(planets => {
+    // all planets have been loaded
+    addTable(planets)
+  })
+  .catch(console.error);
   
-  addToTable(value););})
+// let the Promise know what you want to do when it resolves
+//fetchAll.then(function (value) {
+  
+ // addToTable(value););})
   
 // run the function and receive a Promise
 //const promise = load(game_id, null, token)
@@ -118,7 +134,7 @@ fetchAll.then(function (value) {
   //  addToTable(value2)
       
       
-      ;});});
+    //  ;});});
 
   
  // addToTable(getUserData,1)
