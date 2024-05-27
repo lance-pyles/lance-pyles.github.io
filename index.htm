@@ -122,7 +122,7 @@ function addToTable(streams)
 var tags = document.getElementById("tags").value.split(",");;
 for (page of streams)
   {
-    if (page.data.lenth > 0){
+    if (page.data.length > 0){
 var ul = document.getElementById("pagination");
     var li = document.createElement("li");
 li.appendChild(document.createTextNode(page.pagination.cursor));
