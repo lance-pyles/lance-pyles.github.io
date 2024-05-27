@@ -105,11 +105,12 @@ document.getElementById("pagination").innerHTML = "";
 getStarWarsPlanets(progressCallback, game_id)
   .then(planets => {
     // all planets have been loaded
-    addToTable(planets)
+    addToTable(planets);
+     document.getElementById("pages_loaded").innerHTML = "pages_loaded:" + pages_loaded;
+  document.getElementById("streams_loaded").innerHTML = "streams_loaded:" + streams_loaded;
   })
   .catch(console.error);
- document.getElementById("pages_loaded").innerHTML = "pages_loaded:" + pages_loaded;
-  document.getElementById("streams_loaded").innerHTML = "streams_loaded:" + streams_loaded;
+
 // let the Promise know what you want to do when it resolves
 //fetchAll.then(function (value) {
   
