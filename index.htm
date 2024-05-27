@@ -43,11 +43,12 @@ img:active:hover{
 </table>
 <p id="pages_loaded"></p>
   <p id="streams_loaded"></p>
+    <p id="streams_loaded_post_filter"></p>
 <ul name="pagination" id="pagination"></ul>
 <script>
   var pages_loaded = 0;
   var streams_loaded = 0;
-  var streams_load_post_filter = 0;
+  var streams_loaded_post_filter = 0;
   
 const urlParams = new URLSearchParams(location.hash);
 var table = document.getElementById("streams");
@@ -109,7 +110,7 @@ getStarWarsPlanets(progressCallback, game_id)
     addToTable(planets);
      document.getElementById("pages_loaded").innerHTML = "pages_loaded:" + pages_loaded - 1; // -1 because the last item is empty
   document.getElementById("streams_loaded").innerHTML = "streams_loaded:" + streams_loaded;
-    document.getElementById("streams_load_post_filter").innerHTML = "streams_load_post_filter:" + streams_load_post_filter;
+    document.getElementById("streams_loaded_post_filter").innerHTML = "streams_loaded_post_filter:" + streams_loaded_post_filter;
   })
   .catch(console.error);
 
