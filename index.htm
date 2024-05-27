@@ -72,7 +72,7 @@ document.getElementById("access_token").innerHTML = "access_token: " + access_to
     {
       
          if (cursor){
-        url = "https://api.twitch.tv/helix/streams?first=10&type=live&after=" + data.pagination.cursor;
+        url = "https://api.twitch.tv/helix/streams?first=10&type=live&after=" + cursor;
           }
           else
          {
@@ -82,7 +82,7 @@ document.getElementById("access_token").innerHTML = "access_token: " + access_to
     else
     {
       if (cursor){
-url = "https://api.twitch.tv/helix/streams?first=10&game_id=" + game_id + "&type=live" + data.pagination.cursor;
+url = "https://api.twitch.tv/helix/streams?first=10&game_id=" + game_id + "&type=live" + cursor;
 }
     }
 
