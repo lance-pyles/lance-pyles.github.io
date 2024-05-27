@@ -113,7 +113,7 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
           planets = planets.concat(data);
           pages_loaded = planets.length;
 
-          if(data.pagination.cursor && pages_loaded < max_pages) {
+          if(data.pagination.cursor && pages_loaded < maximum_pages) {
             progress && progress(planets);
             getStarWarsPlanets(progress, data.pagination.cursor, game_id, access_token, planets).then(resolve).catch(reject)
           } else {
