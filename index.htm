@@ -62,7 +62,7 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
           throw `${response.status}: ${response.statusText}`;
         }
         response.json().then(data => { 
-          planets = planets.concat(data.results);
+          planets = planets.concat(data.data);
 
           if(data.pagination.cursor) {
             progress && progress(planets);
