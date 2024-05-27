@@ -150,7 +150,11 @@
  function search() {
      var table = document.getElementById("streams");
      table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>tags</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
-
+     var a = document.getElementById("maximum_pages_input");
+        var b = document.getElementById("maximum_streams_per_page_input");
+ maximum_pages = a.value;
+ maximum_streams_per_page = b.value;
+   
      pages_loaded = 0;
      streams_loaded = 0;
      streams_loaded_post_filter = 0;
