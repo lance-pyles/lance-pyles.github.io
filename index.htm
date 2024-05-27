@@ -41,7 +41,8 @@ img:active:hover{
 <table id="streams">
     
 </table>
-<label for="pagination">Pagination:</label>
+<p id="pages_loaded"></p>
+  <p id="streams_loaded"></p>
 <ul name="pagination" id="pagination"></ul>
 <script>
   var pages_loaded = 0;
@@ -95,7 +96,8 @@ function search(){
   var table = document.getElementById("streams");
   table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>tags</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
 
-
+pages_loaded = 0;
+streams_loaded = 0;
 var e = document.getElementById("games");
 var game_id = e.value;
 document.getElementById("pagination").innerHTML = "";
@@ -106,7 +108,8 @@ getStarWarsPlanets(progressCallback, game_id)
     addToTable(planets)
   })
   .catch(console.error);
-  
+ document.getElementById("pages_loaded").innerHTML = "pages_loaded:" + pages_loaded;
+  document.getElementById("streams_loaded").innerHTML = "streams_loaded:" + streams_loaded;
 // let the Promise know what you want to do when it resolves
 //fetchAll.then(function (value) {
   
