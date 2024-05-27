@@ -4,15 +4,23 @@
   var maximum_pages = 25;
   var maximum_streams_per_page = 20;
   
-  const urlParams = new URLSearchParams(location.hash);
-  var table = document.getElementById("streams");
+  var urlParams;
+  var table;
   
-  var access_token = urlParams.get('#access_token');
+  var access_token;
+
+function page_ready(){
+   urlParams = new URLSearchParams(location.hash);
+   table = document.getElementById("streams");
   
+   access_token = urlParams.get('#access_token');
   //table.innerHTML = "";
   document.getElementById("access_token").innerHTML = "access_token: " + access_token;
   document.getElementById("maximum_pages").innerHTML = "maximum_pages: " + maximum_pages;
   document.getElementById("maximum_streams_per_page").innerHTML = "maximum_streams_per_page: " + maximum_streams_per_page;
+}
+
+
   
   function getStarWarsPlanets(progress, cursor, game_id, access_token, planets = []) {
    //default
