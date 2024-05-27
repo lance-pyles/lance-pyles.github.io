@@ -146,6 +146,9 @@ var access_token = document.getElementById("access_token").innerHTML.replace("ac
 getStarWarsPlanets(progressCallback, null, game_id, access_token)
   .then(planets => {
     // all planets have been loaded
+    if (planets[planets.length - 1].data.length == 0){
+planets.pop();
+    }
     addToTable(planets);
     console.log(`${pages_loaded} pages loaded; ${streams_loaded} streams loaded;`);
      document.getElementById("pages_loaded").innerHTML = `pages_loaded: ${pages_loaded - 1}`; // -1 because the last item is empty
