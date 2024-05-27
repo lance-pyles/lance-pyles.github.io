@@ -98,6 +98,7 @@ function search(){
 
 pages_loaded = 0;
 streams_loaded = 0;
+  streams_loaded_post_filter = 0;
 var e = document.getElementById("games");
 var game_id = e.value;
 document.getElementById("pagination").innerHTML = "";
@@ -108,6 +109,7 @@ getStarWarsPlanets(progressCallback, game_id)
     addToTable(planets);
      document.getElementById("pages_loaded").innerHTML = "pages_loaded:" + pages_loaded - 1; // -1 because the last item is empty
   document.getElementById("streams_loaded").innerHTML = "streams_loaded:" + streams_loaded;
+    document.getElementById("streams_load_post_filter").innerHTML = "streams_load_post_filter:" + streams_load_post_filter;
   })
   .catch(console.error);
 
@@ -139,6 +141,7 @@ addStream = false;
   
 if (addStream)
 {
+  streams_loaded_post_filter += 1;
 var row = table.insertRow(-1);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
