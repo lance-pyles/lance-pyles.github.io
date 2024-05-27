@@ -72,7 +72,7 @@
  function page_ready() {
      urlParams = new URLSearchParams(location.hash);
      table = document.getElementById("streams");
-
+     set_game_id();
      access_token = urlParams.get('#access_token');
      //table.innerHTML = "";
      document.getElementById("access_token").innerHTML = "access_token: " + access_token;
