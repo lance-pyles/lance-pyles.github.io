@@ -205,7 +205,10 @@ var row = table.insertRow(-1);
 }
       
     }
-  }
+  }else{var ul = document.getElementById("pagination");
+    var li = document.createElement("li");
+li.appendChild(document.createTextNode("null"));
+ul.appendChild(li);}
 
   }
   }
