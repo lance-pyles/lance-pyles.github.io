@@ -61,7 +61,7 @@ document.getElementById("token").innerHTML = "Token:" + token;
 
           if(data.pagination.cursor) {
             progress && progress(planets);
-            getStarWarsPlanets(progress, data..pagination.cursor, planets).then(resolve).catch(reject)
+            getStarWarsPlanets(progress, data.pagination.cursor, planets).then(resolve).catch(reject)
           } else {
             resolve(planets);
           }
