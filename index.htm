@@ -50,7 +50,30 @@ table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>tags</th><th>view
 var token = urlParams.get('#access_token');
 document.getElementById("token").innerHTML = "Token:" + token;
 
-  
+  const fetchAll = (next_token, records) => {
+
+  // Wrap the query result in a promise
+  return new Promise(resolve => {
+    // Base case: we've reached the end, and there are no more cursors.
+    if (next_token == null) {
+      return resolve(records)
+    }
+
+    query9.trigger({
+      additionalScope: {
+        next_token
+      },
+      onSuccess: queryResult => {
+        // Add the records from this query to all the records we have so far
+        const newResults = records.concat(queryResult.records)
+        
+        resolve(fetchAll(queryResult.next_token, newResults))
+      }
+    })
+  })
+}
+
+return fetchAll(0, [])
   
 
   function load (gameID, cursor, token) {
@@ -84,17 +107,21 @@ var e = document.getElementById("games");
 var game_id = e.value;
 document.getElementById("pagination").innerHTML = "";
 
-
+// let the Promise know what you want to do when it resolves
+fetchAll.then(function (value) {
+  
+  addToTable(value););})
+  
 // run the function and receive a Promise
-const promise = load(game_id, null, token)
+//const promise = load(game_id, null, token)
 
 // let the Promise know what you want to do when it resolves
-promise.then(function (value) {
+//promise.then(function (value) {
   
-  addToTable(value); 
-  const promise2 = load(game_id, value.pagination.cursor, token);
-  promise2.then(function (value2) {
-    addToTable(value2)
+ // addToTable(value); 
+ // const promise2 = load(game_id, value.pagination.cursor, token);
+ // promise2.then(function (value2) {
+  //  addToTable(value2)
       
       
       ;});});
