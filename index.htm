@@ -59,21 +59,15 @@ document.getElementById("token").innerHTML = "Token:" + token;
       return resolve(records)
     }
 
-    query9.trigger({
-      additionalScope: {
-        next_token
-      },
-      onSuccess: queryResult => {
+    
         // Add the records from this query to all the records we have so far
         const newResults = records.concat(queryResult.records)
         
-        resolve(fetchAll(queryResult.next_token, newResults))
-      }
-    })
-  })
-}
+        resolve(fetchAll(queryResult.cursor, newResults))
+      })}
 
-return fetchAll(0, [])
+
+
   
 
   function load (gameID, cursor, token) {
