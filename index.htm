@@ -97,7 +97,7 @@ document.getElementById("pagination").innerHTML = "";
 getStarWarsPlanets(progressCallback, game_id)
   .then(planets => {
     // all planets have been loaded
-    addTable(planets)
+    addToTable(planets)
   })
   .catch(console.error);
   
