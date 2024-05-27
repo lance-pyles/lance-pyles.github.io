@@ -37,6 +37,8 @@ img:active:hover{
 </select>
 <p>
 <label for="tags">Tags (CSV):</label>
+  <p id="max_pages">max_pages: </p>
+  <p id="streams_per_page">streams_per_page: </p>
 <input type="text" id="tags" name="tags">
 
 <button type="button" onclick="search()">Click Me!</button>
@@ -65,7 +67,8 @@ var table = document.getElementById("streams");
 table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>tags</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
 var access_token = urlParams.get('#access_token');
 document.getElementById("access_token").innerHTML = "access_token: " + access_token;
-
+document.getElementById("max_pages").innerHTML = "max_pages: " + max_pages;
+  document.getElementById("streams_per_page").innerHTML = "streams_per_page: " + streams_per_page;
   function getStarWarsPlanets(progress, cursor, game_id, access_token, planets = []) {
    //default
     var url = "https://api.twitch.tv/helix/streams?first=" + streams_per_page + "&game_id=" + game_id + "&type=live";
