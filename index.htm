@@ -30,6 +30,7 @@ img:active:hover{
 
 <label for="games">Choose a game:</label>
 <select name="games" id="games" onchange="set_game_id()">
+    <option value="-1"></option>
   <option value="33214">Fortnite</option>
   <option value="460649">Splatoon</option>
   <option value="2692">Super Mario 64</option>
@@ -64,7 +65,13 @@ var access_token = urlParams.get('#access_token');
 document.getElementById("access_token").innerHTML = "access_token: " + access_token;
 
   function getStarWarsPlanets(progress, game_id, access_token, planets = []) {
+   // var pages_to_get = -1;
     var url = "https://api.twitch.tv/helix/streams?first=10&game_id=" + game_id + "&type=live"
+    if (game_id == -1)
+    {
+      url = "https://api.twitch.tv/helix/streams?first=10&type=live"
+     // pages_to_get = 5;
+    }
   return new Promise((resolve, reject) => fetch(url, {
 method: "GET",
 headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "Authorization": "Bearer " + access_token, "Client-Id": "9w7l1oen3pmdj1ezkloj0irud7me3p"}
