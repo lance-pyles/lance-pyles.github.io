@@ -44,6 +44,10 @@ img:active:hover{
 <label for="pagination">Pagination:</label>
 <ul name="pagination" id="pagination"></ul>
 <script>
+  var pages_loaded = 0;
+  var streams_loaded = 0;
+  var streams_load_post_filter = 0;
+  
 const urlParams = new URLSearchParams(location.hash);
 var table = document.getElementById("streams");
 table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>tags</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
@@ -61,8 +65,10 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
         if (response.status !== 200)  {
           throw `${response.status}: ${response.statusText}`;
         }
-        response.json().then(data => { 
+        response.json().then(data => {
+          streams_loaded += data.data.length;
           planets = planets.concat(data);
+          pages_loaded = planets.length;
 
           if(data.pagination.cursor) {
             progress && progress(planets);
@@ -76,7 +82,7 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
 
 function progressCallback(planets) {
   // render progress
-  console.log(`${planets.length} loaded`);
+  console.log(`${pages_loaded} pages loaded; ${streams_loaded} streams loaded;`);
 }
 
 
