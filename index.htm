@@ -189,7 +189,7 @@ ul.appendChild(li);
 
 for(tag of tags)
 {
-if(!product.tags.includes(tag) && tag != "")
+if(!product.tags && !product.tags.includes(tag) && tag != "")
 {
 addStream = false;
 }
