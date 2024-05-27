@@ -69,7 +69,7 @@ headers: {"Content-type": "application/x-www-form-urlencoded;charset=UTF-8;", "A
         response.json().then(data => {
           streams_loaded += data.data.length;
           planets = planets.concat(data);
-          pages_loaded = planets.length - 1;
+          pages_loaded = planets.length;
 
           if(data.pagination.cursor) {
             progress && progress(planets);
