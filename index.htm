@@ -84,7 +84,7 @@ var access_token;
     {
       var ef = document.getElementById("gameSearch");
        game_search(ef.value)
-         .then(planets => { alert(planets.data)})
+         .then(planets => { alert(`Is ${planets.data.name} correct?`)})
     }
 
 function game_search(name) {
