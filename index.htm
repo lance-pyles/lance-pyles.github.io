@@ -85,7 +85,7 @@ var access_token;
        game_search(ef.value)
          .then(planets => { 
 
-if (planets.data[0].name === 'undefined')
+if (planets.data.length === 0)
 {
 alert(`${ef.value} not found`);
 return
