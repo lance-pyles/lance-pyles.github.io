@@ -3,10 +3,10 @@
 <head>
 
 <style>
-  figure {margin-left: 0px; margin-top: 0px; margin-bottom: 0px;}
-  p {margin-bottom: 0em; margin-top: 0em;}
-  table, th, td {border: 1px solid black; border-collapse: collapse;}
-  img:active:hover{transform:scale(5.12);}
+figure {margin-left: 0px; margin-top: 0px; margin-bottom: 0px;}
+p {margin-bottom: 0em; margin-top: 0em;}
+table, th, td {border: 1px solid black; border-collapse: collapse;}
+img:active:hover{transform:scale(5.12);}
 </style>
   
 </head>
@@ -18,10 +18,10 @@
 <!--Game ID-->
 <label for="games">Game ID:</label>
 <select name="games" id="games" onchange="set_game_id()">
-  <option value="-1"></option>
-  <option value="33214">Fortnite (33214)</option>
-  <option value="460649">Splatoon (460649)</option>
-  <option value="2692">Super Mario 64 (2692)</option>
+<option value="-1"></option>
+<option value="33214">Fortnite (33214)</option>
+<option value="460649">Splatoon (460649)</option>
+<option value="2692">Super Mario 64 (2692)</option>
 </select>
 
 <p>
@@ -45,7 +45,12 @@
 <p><button type="button" onclick="search()">Click Me!</button>
 
 <table id="streams">
-  <tr><th>user_name</th><th>game_name</th><th>tags</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>
+<tr>
+  <th>user_name</th>
+  <th>game_name</th><th>tags</th>
+  <th>viewer_count</th><th>thumbnail_url</th>
+  <th>Thumbnail</th>
+</tr>
 </table>
 
 <p id="pages_loaded"></p>
@@ -56,35 +61,35 @@
 
 <!--Pagination-->
 <figure>
-  <figcaption>pagination: </figcaption>
-  <ol name="pagination" id="pagination"></ol>
+<figcaption>pagination: </figcaption>
+<ol name="pagination" id="pagination"></ol>
 </figure>
 
 <script>
- var pages_loaded = 0;
- var streams_loaded = 0;
- var streams_loaded_post_filter = 0;
- var maximum_pages = 1;
- var maximum_streams_per_page = 20;
+var pages_loaded = 0;
+var streams_loaded = 0;
+var streams_loaded_post_filter = 0;
+var maximum_pages = 1;
+var maximum_streams_per_page = 20;
 
- var urlParams;
- var table;
+var urlParams;
+var table;
 
- var access_token;
+var access_token;
 
- function page_ready() {
+function page_ready() {
      urlParams = new URLSearchParams(location.hash);
      table = document.getElementById("streams");
      set_game_id();
      access_token = urlParams.get('#access_token');
-
+      document.getElementById("access_token").value = access_token;
      document.getElementById("maximum_pages_input").value = maximum_pages;
      document.getElementById("maximum_streams_per_page_input").value = maximum_streams_per_page;
  }
 
 
 
- function getStarWarsPlanets(progress, cursor, game_id, access_token, planets = []) {
+function getStarWarsPlanets(progress, cursor, game_id, access_token, planets = []) {
      //default
      var url = `https://api.twitch.tv/helix/streams?first=${maximum_streams_per_page}&game_id=${game_id}&type=live`;
 
@@ -131,13 +136,13 @@
          }).catch(reject));
  }
 
- function set_game_id() {
+function set_game_id() {
      var e = document.getElementById("games");
      var game_id = e.value;
      document.getElementById("game_id").innerHTML = "game_id: " + game_id;
  }
 
- function progressCallback(planets) {
+function progressCallback(planets) {
      // render progress
      console.log(`${pages_loaded} pages loaded; ${streams_loaded} streams loaded;`);
  }
@@ -145,7 +150,7 @@
 
 
 
- function search() {
+function search() {
      var table = document.getElementById("streams");
      table.innerHTML = "<tr><th>user_name</th><th>game_name</th><th>tags</th><th>viewer_count</th><th>thumbnail_url</th><th>Thumbnail</th></tr>";
      var a = document.getElementById("maximum_pages_input");
@@ -187,7 +192,7 @@
 
  }
 
- function addToTable(streams) {
+function addToTable(streams) {
      var tags = document.getElementById("tags").value.split(",");;
      for (page of streams) {
          if (page.data.length > 0) {
