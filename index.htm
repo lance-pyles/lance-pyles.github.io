@@ -30,7 +30,7 @@ img:active:hover{transform:scale(5.12);}
 <p>
   
 <!--Tags-->
-<label for="tags">Tags (CSV):</label>
+<label for="tags" title="Results using any of the listed tags will be shown.">Tags (CSV):</label>
 <input type="text" id="tags" name="tags">
 <p>
     
@@ -87,7 +87,7 @@ var access_token;
 
 if (planets.data.length === 0)
 {
-alert(`${ef.value} not found`);
+alert(`${ef.value} not found.`);
 return
 }
            
