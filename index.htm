@@ -268,7 +268,7 @@ function addToTable(streams) {
 
 
                  for (tag of tags) {
-                     if (product.tags === null || !product.tags.includes(tag) && tag != "") {
+                     if (product.tags === null || (!product.tags.includes(tag) && tag != "") ){
                          addStream = false;
                      }
                  }
