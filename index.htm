@@ -264,13 +264,14 @@ function addToTable(streams) {
              ul.appendChild(li);
 
              for (const product of page.data) {
-                 var addStream = true;
+                 var addStream = false;
 
 
                  for (tag of tags) {
-                     if (product.tags === null || (!product.tags.includes(tag) && tag != "") ){
-                         addStream = false;
-                     }
+                   if (product.tags !== null){
+                     if (product.tags.includes(tag)){
+                         addStream = true;
+                     }}
                  }
 
                  if (addStream) {
