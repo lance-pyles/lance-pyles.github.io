@@ -84,7 +84,14 @@ var access_token;
     {
       var ef = document.getElementById("gameSearch");
        game_search(ef.value)
-         .then(planets => { alert(`Is ${planets.data.name} correct?`)})
+         .then(planets => { 
+           if (confirm(`Is ${planets.data.name} correct?`) == true) {
+  text = "You pressed OK!";
+} else {
+  text = "You canceled!";
+}
+         
+         })
     }
 
 function game_search(name) {
