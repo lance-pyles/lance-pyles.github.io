@@ -159,7 +159,7 @@
      var e = document.getElementById("games");
      var game_id = e.value;
      document.getElementById("pagination").innerHTML = "";
-     var access_token = document.getElementById("access_token").innerHTML.replace("access_token: ", "");
+     access_token = document.getElementById("access_token").innerHTML.replace("access_token: ", "");
      getStarWarsPlanets(progressCallback, null, game_id, access_token)
          .then(planets => {
              // all planets have been loaded
