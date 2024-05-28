@@ -82,7 +82,7 @@ function page_ready() {
      table = document.getElementById("streams");
      set_game_id();
      access_token = urlParams.get('#access_token');
-      document.getElementById("access_token").value = access_token;
+      document.getElementById("access_token").innerHTML = "access_token: " + access_token;
      document.getElementById("maximum_pages_input").value = maximum_pages;
      document.getElementById("maximum_streams_per_page_input").value = maximum_streams_per_page;
  }
