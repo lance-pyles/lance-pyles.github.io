@@ -84,6 +84,13 @@ var access_token;
       var ef = document.getElementById("gameSearch");
        game_search(ef.value)
          .then(planets => { 
+
+if (planets.data[0].name === 'undefined')
+{
+alert(`${ef.value} not found`);
+return
+}
+           
            if (confirm(`Is ${planets.data[0].name} correct? OK to add to search options.`) == true) {
   var select = document.getElementById('games');
 var option = document.createElement("option");
