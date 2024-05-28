@@ -87,7 +87,8 @@ var access_token;
            if (confirm(`Is ${planets.data[0].name} correct? OK to add to search options.`) == true) {
   var select = document.getElementById('games');
 var option = document.createElement("option");
-option.text = "Kiwi";
+option.text = planets.data[0].name + "(" + planets.data[0].id + ")";
+             option.value = planets.data[0].id;
 select.add(option);
 
 } //else {
